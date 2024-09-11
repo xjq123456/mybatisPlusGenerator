@@ -117,6 +117,7 @@ public class MybatisPlusGeneratorUpdateDTO {
                     map.put("paramType",tableInfo1.getEntityName());
                     map.put("cnpkg", finalJedis.get("userOrAdmin"));
                     map.put("dto_comment","修改DTO");
+                    map.put("mappingPre",finalJedis.get("userOrAdmin"));
                     this.setMap(map);
                 }
             }

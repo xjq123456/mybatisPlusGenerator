@@ -75,6 +75,7 @@ public class MybatisPlusGeneratorPageDTO {
                         map.put("paramType",tableInfo1.getEntityName());
                         map.put("cnpkg", finalJedis.get("userOrAdmin"));
                         map.put("dto_comment","分页DTO");
+                        map.put("mappingPre",finalJedis.get("userOrAdmin"));
                         this.setMap(map);
                     }
                 }

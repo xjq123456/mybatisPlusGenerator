@@ -31,6 +31,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 import lombok.experimental.Accessors;
 import java.io.Serializable;
+import javax.validation.constraints.NotNull;
 </#if>
 <#if entityLombokModel>
 @Data

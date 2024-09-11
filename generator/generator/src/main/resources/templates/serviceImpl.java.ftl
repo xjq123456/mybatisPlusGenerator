@@ -9,6 +9,7 @@ import com.smt.web.vo.${entity};
 import com.smt.web.dto.${cfg.paramType}AddDTO;
 import com.smt.web.dto.${cfg.paramType}UpdateDTO;
 import com.smt.web.dto.${cfg.paramType}PageDTO;
+import com.smt.web.dto.CommonIdDetailDTO;
 import com.smt.web.entity.${cfg.paramType};
 import com.smt.web.mapper.${table.mapperName};
 import ${superServiceImplClassPackage};
@@ -44,7 +45,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
     * @since ${date}
     */
     @Override
-    void add${cfg.paramType}(${cfg.paramType}AddDTO dto){
+    public void add${cfg.paramType}(${cfg.paramType}AddDTO dto){
             <#assign variable = "${cfg.paramType}">
             <#assign firstLetterLower = variable?substring(0, 1)?lower_case>
             <#assign restOfString = variable?substring(1)>
@@ -71,7 +72,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
     * @since ${date}
     */
     @Override
-    void update${cfg.paramType}(${cfg.paramType}UpdateDTO dto){
+    public void update${cfg.paramType}(${cfg.paramType}UpdateDTO dto){
         try {
             ${cfg.paramType} ${result} = new ${cfg.paramType}();
             BeanUtil.copyProperties(dto, ${result});
@@ -91,7 +92,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
     * @since ${date}
     */
     @Override
-    void remove${cfg.paramType}(CommonIdDetailDTO dto){
+    public void remove${cfg.paramType}(CommonIdDetailDTO dto){
         try {
             LambdaUpdateWrapper<${cfg.paramType}> wrapper = new LambdaUpdateWrapper<${cfg.paramType}>();
                 wrapper.eq(${cfg.paramType}::getId, dto.getId())
@@ -113,7 +114,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
     * @since ${date}
     */
     @Override
-    ${entity} get${cfg.paramType}(CommonIdDetailDTO dto){
+    public ${entity} get${cfg.paramType}(CommonIdDetailDTO dto){
         LambdaQueryWrapper<${cfg.paramType}> wrapper = new LambdaQueryWrapper<${cfg.paramType}>();
         wrapper.eq(${cfg.paramType}::getId, dto.getId())
         .eq(${cfg.paramType}::getIsDelete, false);
@@ -132,13 +133,13 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
     * @since ${date}
     */
     @Override
-    PageResult<${entity}> get${cfg.paramType}(${cfg.paramType}PageDTO dto){
+    public PageResult<${entity}> get${cfg.paramType}(${cfg.paramType}PageDTO dto){
         Page<${cfg.paramType}> page = new Page<>(dto.getPage(), dto.getPageSize());
         LambdaQueryWrapper<${cfg.paramType}> wrapper = new LambdaQueryWrapper<${cfg.paramType}>();
             wrapper.eq(${cfg.paramType}::getIsDelete, false)
                    .eq(${cfg.paramType}::getStatus,1);
                 page = this.baseMapper.selectPage(page, wrapper);
-                List<${cfg.paramType}> ${result}VOS = new ArrayList<>();
+                List<${cfg.paramType}VO> ${result}VOS = new ArrayList<>();
                 ${result}VOS = page.getRecords().stream().map(vos -> {
                 ${entity} ${result}VO = new ${entity}();
                 BeanUtil.copyProperties(vos, ${result}VO);

@@ -13,6 +13,12 @@ import com.smt.web.service.${table.serviceName};
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import com.smt.web.vo.${cfg.paramType}VO;
+import com.smt.web.dto.${cfg.paramType}AddDTO;
+import com.smt.web.dto.${cfg.paramType}UpdateDTO;
+import com.smt.web.dto.${cfg.paramType}PageDTO;
+import com.smt.web.result.PageResult;
+import com.smt.web.result.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -34,6 +40,7 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 <#else>
 @RestController
+@RequestMapping("/${cfg.mappingPre}/${table.controllerName}")
 </#if>
 @Api(tags = "${table.comment!}管理")
 <#if kotlin>
@@ -54,8 +61,8 @@ public class ${table.controllerName} {
 
     @PostMapping("/v1/get${cfg.paramType}")
     @ApiOperation("${table.comment!}详情")
-    public Result<${result}VO> get${cfg.paramType}(@Validated @RequestBody CommonIdDetailDTO dto){
-        ${result}VO re = this.${cfg.paramType?uncap_first}Service.get${cfg.paramType}(dto);
+    public Result<${cfg.paramType}VO> get${cfg.paramType}(@Validated @RequestBody CommonIdDetailDTO dto){
+        $${cfg.paramType}VO re = this.${cfg.paramType?uncap_first}Service.get${cfg.paramType}(dto);
             return Result.success(re);
         }
 
@@ -87,7 +94,7 @@ public class ${table.controllerName} {
 
     <#assign var2 = "<${cfg.paramType}VO>" />
     @PostMapping("/v1/getServiceRateList")
-    @ApiOperation("费率设置分页查询")
+    @ApiOperation("${table.comment!}分页查询")
     public Result<PageResult${var2}> get${cfg.paramType}List(@Validated @RequestBody ${cfg.paramType}PageDTO dto){
         PageResult<${cfg.paramType}VO> result = this.${cfg.paramType?uncap_first}Service.get${cfg.paramType}List(dto);
             return Result.success(result);

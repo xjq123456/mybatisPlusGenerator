@@ -113,6 +113,7 @@ public class MybatisPlusGenerator2Main {
                                 map.put("idType","ID_WORKER");
                                 map.put("paramType",tableInfo1.getEntityName());
                                 map.put("cnpkg",jedis.get("userOrAdmin"));
+                                map.put("mappingPre",jedis.get("userOrAdmin"));
                                 this.setMap(map);
                         }
 

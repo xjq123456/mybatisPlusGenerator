@@ -84,6 +84,7 @@ public class MybatisPlusGeneratorVo {
                         map.put("idType","ID_WORKER");
                         map.put("cnpkg", finalJedis.get("userOrAdmin"));
                         map.put("paramType",tableInfo1.getEntityName().split("VO")[0]);
+                        map.put("mappingPre",finalJedis.get("userOrAdmin"));
                         this.setMap(map);
                     }
                     // 自定义配置，可以在模板中使用
