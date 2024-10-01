@@ -80,7 +80,7 @@ public interface ${table.serviceName} extends IService<${cfg.paramType}>{
         * @author ${author}
         * @since ${date}
         */
-        PageResult<${entity}> get${cfg.paramType}(${cfg.paramType}PageDTO dto);
+        PageResult<${entity}> get${cfg.paramType}List(${cfg.paramType}PageDTO dto);
 
 }
 </#if>

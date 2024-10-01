@@ -17,6 +17,7 @@ import com.smt.web.vo.${cfg.paramType}VO;
 import com.smt.web.dto.${cfg.paramType}AddDTO;
 import com.smt.web.dto.${cfg.paramType}UpdateDTO;
 import com.smt.web.dto.${cfg.paramType}PageDTO;
+import com.smt.web.dto.CommonIdDetailDTO;
 import com.smt.web.result.PageResult;
 import com.smt.web.result.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +63,7 @@ public class ${table.controllerName} {
     @PostMapping("/v1/get${cfg.paramType}")
     @ApiOperation("${table.comment!}详情")
     public Result<${cfg.paramType}VO> get${cfg.paramType}(@Validated @RequestBody CommonIdDetailDTO dto){
-        $${cfg.paramType}VO re = this.${cfg.paramType?uncap_first}Service.get${cfg.paramType}(dto);
+        ${cfg.paramType}VO re = this.${cfg.paramType?uncap_first}Service.get${cfg.paramType}(dto);
             return Result.success(re);
         }
 
@@ -85,8 +86,8 @@ public class ${table.controllerName} {
 
     @PostMapping("/v1/remove${cfg.paramType}")
     @ApiOperation("${table.comment!}删除")
-    public Result removeupdate${cfg.paramType}(@Validated @RequestBody CommonIdRemoveDTO dto){
-        this.${cfg.paramType?uncap_first}Service.removeupdate${cfg.paramType}(dto);
+    public Result remove${cfg.paramType}(@Validated @RequestBody CommonIdDetailDTO dto){
+        this.${cfg.paramType?uncap_first}Service.remove${cfg.paramType}(dto);
             return Result.success();
     }
 

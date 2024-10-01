@@ -133,7 +133,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
     * @since ${date}
     */
     @Override
-    public PageResult<${entity}> get${cfg.paramType}(${cfg.paramType}PageDTO dto){
+    public PageResult<${entity}> get${cfg.paramType}List(${cfg.paramType}PageDTO dto){
         Page<${cfg.paramType}> page = new Page<>(dto.getPage(), dto.getPageSize());
         LambdaQueryWrapper<${cfg.paramType}> wrapper = new LambdaQueryWrapper<${cfg.paramType}>();
             wrapper.eq(${cfg.paramType}::getIsDelete, false)
